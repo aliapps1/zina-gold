@@ -29,8 +29,46 @@ body.rtl{direction:rtl;font-family:Tahoma,Arial,sans-serif}
 .eyebrow{display:inline-flex;border:1px solid var(--border);color:var(--gold2);background:rgba(216,168,67,.08);border-radius:999px;padding:8px 12px;font-size:12px;font-weight:900;margin-bottom:14px}
 h1{margin:0;font-size:clamp(36px,10vw,52px);line-height:.96;letter-spacing:-1.6px}
 .hero-copy p,.section-title p,.compliance-card p{color:var(--muted);font-size:15px;line-height:1.7}
-.gold-card{margin:22px 0 18px;min-height:230px;border-radius:30px;padding:24px;position:relative;overflow:hidden;color:#1a1004;background:linear-gradient(115deg,rgba(255,255,255,.22),transparent 24%),linear-gradient(135deg,#fff1b5 0%,#d8a843 47%,#835715 100%);box-shadow:0 24px 60px rgba(216,168,67,.25),inset 0 1px 0 rgba(255,255,255,.45);transform:translateZ(0)}
-.gold-card::after{content:"";position:absolute;right:-58px;top:-78px;width:210px;height:210px;border-radius:50%;background:rgba(255,255,255,.16)}
+.gold-card{
+  margin:22px auto 18px;
+
+  width:100%;
+  max-width:380px;
+
+  aspect-ratio:1.58/1;   /* اصلاح اصلی */
+
+  border-radius:30px;
+  padding:20px;
+  position:relative;
+  overflow:hidden;
+
+  color:#1a1004;
+
+  background:
+    linear-gradient(115deg,rgba(255,255,255,.22),transparent 24%),
+    linear-gradient(135deg,#fff1b5 0%,#d8a843 47%,#835715 100%);
+
+  box-shadow:
+    0 24px 60px rgba(216,168,67,.25),
+    inset 0 1px 0 rgba(255,255,255,.45);
+
+  transform:translateZ(0);
+
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+}
+
+.gold-card::after{
+  content:"";
+  position:absolute;
+  right:-58px;
+  top:-78px;
+  width:210px;
+  height:210px;
+  border-radius:50%;
+  background:rgba(255,255,255,.16)
+}
 .shine{position:absolute;inset:0;background:linear-gradient(115deg,transparent 0%,rgba(255,255,255,.23) 42%,transparent 58%);transform:translateX(-120%);animation:shine 4s ease-in-out infinite}
 @keyframes shine{0%,42%{transform:translateX(-120%)}64%,100%{transform:translateX(120%)}}
 .card-top,.card-bottom,.chip-row,.card-number{position:relative;z-index:2}
