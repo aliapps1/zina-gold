@@ -1,18 +1,15 @@
 {
-  "name": "ZINA Gold Card Demo",
-  "short_name": "ZINA Gold",
-  "description": "Professional demo for a gold-backed digital card concept.",
-  "start_url": "./index.html",
+  "name": "ZINA Gold",
+  "short_name": "ZINA",
+  "start_url": "./",
   "display": "standalone",
-  "background_color": "#090704",
-  "theme_color": "#090704",
-  "orientation": "portrait-primary",
+  "background_color": "#000000",
+  "theme_color": "#d8a843",
   "icons": [
     {
       "src": "icon.svg",
       "sizes": "512x512",
-      "type": "image/svg+xml",
-      "purpose": "any maskable"
+      "type": "image/svg+xml"
     }
   ]
 }
