@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>ZINA Gold | Wealth in Gold</title>
+  <meta name="description" content="ZINA Gold demo — a premium gold-backed digital card concept for the UAE and GCC market." />
+  <meta name="theme-color" content="#080503" />
+  <link rel="manifest" href="manifest.json" />
+  <link rel="icon" href="icon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="icon.svg" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <header class="app-header">
+      <div class="brand-lockup">
+        <div class="brand-mark">Z</div>
+        <div>
+          <strong data-i18n="brand">ZINA Gold</strong>
+          <span data-i18n="subBrand">Gold-backed card demo</span>
+        </div>
+      </div>
+      <div class="header-actions">
+        <button class="lang-btn" onclick="setLang('en')">EN</button>
+        <button class="lang-btn" onclick="setLang('ar')">AR</button>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero-card">
+        <div class="hero-copy">
+          <span class="eyebrow" data-i18n="eyebrow">Premium Demo • UAE First</span>
+          <h1 data-i18n="headline">Your wealth, always in hand.</h1>
+          <p data-i18n="intro">A premium concept for holding value in gold and accessing AED spending power through future regulated card partners.</p>
+        </div>
+
+        <div class="gold-card" id="goldCard">
+          <div class="shine"></div>
+          <div class="card-top">
+            <div><span class="tiny">ZINA</span><strong>GOLD</strong></div>
+            <span class="network">VIRTUAL</span>
+          </div>
+          <div class="chip-row">
+            <div class="chip"></div>
+            <div class="contactless">)))</div>
+          </div>
+          <div class="card-number">•••• 4821 9017 3388</div>
+          <div class="card-bottom">
+            <div><span data-i18n="holder">Card Holder</span><strong>ALI S.</strong></div>
+            <div><span data-i18n="status">Status</span><strong id="cardStatus" data-i18n="active">Active</strong></div>
+          </div>
+        </div>
+
+        <div class="balance-strip">
+          <div><span data-i18n="goldBalance">Gold Balance</span><strong>12.45g</strong></div>
+          <div><span data-i18n="aedValue">AED Value</span><strong>AED 3,486</strong></div>
+        </div>
+
+        <div class="quick-actions">
+          <button onclick="scrollToSection('convert')" data-i18n="convert">Convert</button>
+          <button onclick="scrollToSection('withdraw')" data-i18n="withdraw">Withdraw</button>
+          <button onclick="scrollToSection('send')" data-i18n="send">Send</button>
+          <button onclick="scrollToSection('history')" data-i18n="history">History</button>
+        </div>
+
+        <div class="demo-warning" data-i18n="warning">Demo only. Banking, card issuing, custody, KYC, AML and ATM functions require regulated partner integration and approval.</div>
+      </section>
+
+      <section class="stats-grid">
+        <div class="stat-card"><span data-i18n="goldPrice">Gold Price / g</span><strong>AED 280</strong></div>
+        <div class="stat-card"><span data-i18n="cardLimit">Demo Card Limit</span><strong>AED 2,500</strong></div>
+        <div class="stat-card"><span data-i18n="spentToday">Spent Today</span><strong>AED 145</strong></div>
+      </section>
+
+      <section class="panel" id="convert">
+        <div class="section-title">
+          <h2 data-i18n="convertTitle">Convert Gold to AED</h2>
+          <p data-i18n="convertText">Simulate instant conversion from gold balance into AED spending power.</p>
+        </div>
+        <label data-i18n="gramsLabel">Gold amount in grams</label>
+        <input id="grams" type="number" min="0" step="0.1" value="1.5" oninput="convertGold()" />
+        <label data-i18n="purposeLabel">Purpose</label>
+        <select id="purpose">
+          <option>Card Spend</option>
+          <option>ATM Withdrawal</option>
+          <option>Wallet AED Balance</option>
+        </select>
+        <div class="result-card" id="convertResult">Estimated value: AED 420</div>
+      </section>
+
+      <section class="panel" id="withdraw">
+        <div class="section-title">
+          <h2 data-i18n="atmTitle">ATM Withdrawal Simulation</h2>
+          <p data-i18n="atmText">Shown as a future regulated card issuer integration scenario.</p>
+        </div>
+        <label data-i18n="withdrawLabel">Withdrawal amount</label>
+        <input id="withdrawAmount" type="number" min="0" value="500" oninput="withdrawSim()" />
+        <button class="primary-btn" onclick="withdrawSim()" data-i18n="simulate">Simulate Request</button>
+        <div class="result-card" id="withdrawResult">AED 500 would require about 1.79g gold.</div>
+      </section>
+
+      <section class="panel" id="send">
+        <div class="section-title">
+          <h2 data-i18n="sendTitle">Send Gold Value</h2>
+          <p data-i18n="sendText">A demo flow for sending AED-equivalent value backed by gold balance.</p>
+        </div>
+        <label data-i18n="recipientLabel">Recipient</label>
+        <input value="demo@zina.gold" />
+        <label data-i18n="sendAmountLabel">Amount in AED</label>
+        <input id="sendAmount" type="number" value="250" />
+        <button class="secondary-btn" onclick="toastMessage()" data-i18n="sendDemo">Preview Send</button>
+      </section>
+
+      <section class="panel" id="history">
+        <div class="section-title">
+          <h2 data-i18n="historyTitle">Recent Activity</h2>
+          <p data-i18n="historyText">Demo transaction history for the investor preview.</p>
+        </div>
+        <div class="transactions">
+          <div class="tx"><div><strong data-i18n="tx1">Gold top-up</strong><span>Today • 10:15</span></div><b class="positive">+2.00g</b></div>
+          <div class="tx"><div><strong data-i18n="tx2">Card purchase</strong><span>Yesterday • Dubai Mall</span></div><b class="negative">-AED 145</b></div>
+          <div class="tx"><div><strong data-i18n="tx3">ATM simulation</strong><span>Demo • Partner issuer</span></div><b class="negative">-AED 500</b></div>
+        </div>
+      </section>
+
+      <section class="compliance-card">
+        <h2 data-i18n="complianceTitle">Regulated Launch Requirements</h2>
+        <p data-i18n="complianceText">Final launch requires KYC, AML, licensed gold custody, card issuer API integration, and regulatory approval.</p>
+        <div class="pill-row">
+          <span>KYC</span><span>AML</span><span data-i18n="custody">Gold Custody</span><span data-i18n="issuer">Issuer API</span>
+        </div>
+      </section>
+    </main>
+
+    <nav class="bottom-nav">
+      <button onclick="window.scrollTo({top:0,behavior:'smooth'})">Home</button>
+      <button onclick="scrollToSection('convert')" data-i18n="convert">Convert</button>
+      <button onclick="scrollToSection('withdraw')" data-i18n="withdraw">Withdraw</button>
+      <button onclick="scrollToSection('history')" data-i18n="history">History</button>
+    </nav>
+
+    <div class="toast" id="toast" data-i18n="toast">Preview only — no live transfer has been made.</div>
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>
