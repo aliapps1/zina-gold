@@ -3,166 +3,43 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ZINA Gold Card | Professional Demo</title>
-  <meta name="description" content="ZINA Gold Card professional demo — a gold-backed digital wealth and card experience concept for UAE and GCC investors." />
-  <meta name="theme-color" content="#090704" />
+  <title>ZINA Gold</title>
+
   <link rel="manifest" href="manifest.json" />
+  <link rel="icon" href="icon.svg" />
   <link rel="stylesheet" href="styles.css" />
 </head>
+
 <body>
-  <main class="app">
-    <header class="topbar">
-      <button class="brand" onclick="goToSection('home')" aria-label="ZINA Gold home">
-        <div class="brand-mark">Z</div>
-        <div>
-          <div data-i18n="brandName">ZINA Gold</div>
-          <small data-i18n="brandSub">Gold-backed card demo</small>
-        </div>
-      </button>
+  <div class="app">
 
-      <nav class="nav" aria-label="Main navigation">
-        <button class="nav-link" onclick="goToSection('features')" data-i18n="navFeatures">Features</button>
-        <button class="nav-link" onclick="goToSection('dashboard')" data-i18n="navDemo">Demo</button>
-        <button class="nav-link" onclick="goToSection('compliance')" data-i18n="navCompliance">Compliance</button>
-        <button class="lang-btn" onclick="setLanguage('en')">EN</button>
-        <button class="lang-btn" onclick="setLanguage('ar')">عربي</button>
-      </nav>
-    </header>
+    <h1>ZINA Gold</h1>
 
-    <section class="hero" id="home">
-      <div class="hero-copy glass-card">
-        <div class="badge" data-i18n="badge">Professional Concept Demo • UAE & GCC</div>
-        <h1><span data-i18n="heroTitle1">Your wealth,</span><br><span class="gold-text" data-i18n="heroTitle2">always in hand.</span></h1>
-        <p data-i18n="heroText">ZINA Gold is a professional product demo for a gold-backed digital account and card experience, designed for users who want to hold value in gold and access spending power through regulated card partners.</p>
-        <div class="hero-actions">
-          <button class="primary-btn" onclick="goToSection('dashboard')" data-i18n="tryDemo">Try Demo</button>
-          <button class="secondary-btn" onclick="goToSection('features')" data-i18n="seeHow">See How It Works</button>
-        </div>
-        <p class="legal-note" data-i18n="legalNote">Demo only. Banking, card issuing, custody, KYC, AML and ATM functions require regulated partner integration and approval.</p>
-      </div>
+    <div class="card">
+      <h2>Gold Balance</h2>
+      <p id="gold">12.45g</p>
+    </div>
 
-      <div class="card-preview glass-card">
-        <div class="virtual-card" aria-label="ZINA Gold virtual card preview">
-          <div class="card-row">
-            <strong>ZINA GOLD</strong>
-            <span>VIRTUAL</span>
-          </div>
-          <div class="chip"></div>
-          <div class="card-number">•••• 4821 9017 3388</div>
-          <div class="card-row bottom">
-            <div>
-              <small data-i18n="cardHolder">Card Holder</small>
-              <strong>ALI S.</strong>
-            </div>
-            <div>
-              <small data-i18n="cardStatusLabel">Status</small>
-              <strong id="cardStatus">ACTIVE</strong>
-            </div>
-          </div>
-        </div>
-        <button class="primary-btn full" id="freezeButton" onclick="toggleCardStatus()" data-i18n="freezeCard">Freeze Card</button>
-      </div>
-    </section>
+    <div class="card">
+      <h2>AED Value</h2>
+      <p id="aed">AED 3,486</p>
+    </div>
 
-    <section class="metrics" id="dashboard">
-      <article class="metric glass-card">
-        <span data-i18n="goldBalance">Gold Balance</span>
-        <strong id="goldBalance">12.45g</strong>
-      </article>
-      <article class="metric glass-card">
-        <span data-i18n="aedValue">AED Value</span>
-        <strong id="aedValue">AED 3,486</strong>
-      </article>
-      <article class="metric glass-card">
-        <span data-i18n="goldPrice">Gold Price / g</span>
-        <strong id="goldPrice">AED 280</strong>
-      </article>
-      <article class="metric glass-card">
-        <span data-i18n="demoLimit">Demo Card Limit</span>
-        <strong>AED 2,500</strong>
-      </article>
-    </section>
+    <div class="card">
+      <h2>Convert Gold → AED</h2>
+      <input id="grams" type="number" value="1" />
+      <button onclick="convert()">Convert</button>
+      <p id="result"></p>
+    </div>
 
-    <section class="two-column">
-      <article class="panel glass-card">
-        <h2 data-i18n="convertTitle">Convert Gold to AED</h2>
-        <p class="muted" data-i18n="convertText">Simulate instant conversion from gold balance into AED spending power.</p>
-        <div class="form-grid">
-          <label for="goldInput" data-i18n="gramsLabel">Gold amount in grams</label>
-          <input id="goldInput" type="number" min="0" step="0.1" value="1.5" oninput="convertGoldToAed()" />
-          <label for="convertPurpose" data-i18n="purposeLabel">Purpose</label>
-          <select id="convertPurpose">
-            <option>Card Spend</option>
-            <option>ATM Withdrawal</option>
-            <option>Wallet AED Balance</option>
-          </select>
-        </div>
-        <div class="result" id="convertResult">Estimated value: AED 420</div>
-      </article>
+    <div class="card">
+      <h2>ATM Simulation</h2>
+      <input id="withdraw" type="number" value="500" />
+      <button onclick="withdraw()">Simulate</button>
+      <p id="withdrawResult"></p>
+    </div>
 
-      <article class="panel glass-card">
-        <h2 data-i18n="atmTitle">ATM Withdrawal Simulation</h2>
-        <p class="muted" data-i18n="atmText">ATM withdrawal is shown as a regulated card issuer integration scenario.</p>
-        <div class="form-grid">
-          <label for="withdrawInput" data-i18n="withdrawLabel">Withdrawal amount</label>
-          <input id="withdrawInput" type="number" min="0" step="10" value="500" oninput="simulateWithdrawal()" />
-          <button class="primary-btn" onclick="simulateWithdrawal()" data-i18n="simulateButton">Simulate Request</button>
-        </div>
-        <div class="result" id="withdrawResult">AED 500 would require about 1.79g gold.</div>
-      </article>
-    </section>
-
-    <section class="two-column">
-      <article class="panel glass-card">
-        <h2 data-i18n="txTitle">Recent Transactions</h2>
-        <div class="transactions">
-          <div class="tx-item">
-            <div><strong data-i18n="txTopup">Gold top-up</strong><small>Today • 10:15</small></div>
-            <strong class="positive">+2.00g</strong>
-          </div>
-          <div class="tx-item">
-            <div><strong data-i18n="txPurchase">Card purchase</strong><small>Yesterday • Dubai Mall</small></div>
-            <strong class="negative">-AED 145</strong>
-          </div>
-          <div class="tx-item">
-            <div><strong data-i18n="txAtm">ATM simulation</strong><small>Demo • Partner issuer</small></div>
-            <strong class="negative">-AED 500</strong>
-          </div>
-        </div>
-      </article>
-
-      <article class="panel glass-card" id="compliance">
-        <h2 data-i18n="complianceTitle">Compliance-Ready Flow</h2>
-        <p class="muted" data-i18n="complianceText">The final product will require identity verification, AML screening, gold custody confirmation, and regulated card issuing before launch.</p>
-        <div class="pill-row">
-          <span>KYC</span>
-          <span>AML</span>
-          <span data-i18n="custodyPill">Gold Custody</span>
-          <span data-i18n="issuerPill">Issuer API</span>
-        </div>
-      </article>
-    </section>
-
-    <section class="features" id="features">
-      <article class="feature glass-card">
-        <h3 data-i18n="feature1Title">Gold-backed value</h3>
-        <p data-i18n="feature1Text">Users can view balance in grams of gold and AED equivalent.</p>
-      </article>
-      <article class="feature glass-card">
-        <h3 data-i18n="feature2Title">Card-ready concept</h3>
-        <p data-i18n="feature2Text">Designed for future Visa/Mastercard issuer integration.</p>
-      </article>
-      <article class="feature glass-card">
-        <h3 data-i18n="feature3Title">UAE-first positioning</h3>
-        <p data-i18n="feature3Text">Built for UAE and GCC users who trust gold as a store of value.</p>
-      </article>
-    </section>
-
-    <footer class="footer">
-      <strong>ZINA Gold</strong>
-      <span data-i18n="footerText">Professional concept demo. Not a live financial service.</span>
-    </footer>
-  </main>
+  </div>
 
   <script src="app.js"></script>
 </body>
