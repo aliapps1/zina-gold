@@ -35,10 +35,11 @@ h1{margin:0;font-size:clamp(36px,10vw,52px);line-height:.96;letter-spacing:-1.6p
   width:100%;
   max-width:380px;
 
-  aspect-ratio:1.58/1;   /* اصلاح اصلی */
+  aspect-ratio:1.58/1;
 
   border-radius:30px;
-  padding:20px;
+  padding:22px 20px 26px; /* اصلاح فاصله‌ها */
+
   position:relative;
   overflow:hidden;
 
@@ -59,6 +60,25 @@ h1{margin:0;font-size:clamp(36px,10vw,52px);line-height:.96;letter-spacing:-1.6p
   justify-content:space-between;
 }
 
+/* افکت نور نرم روی کارت */
+.gold-card::before{
+  content:"";
+  position:absolute;
+  top:0;
+  left:-120%;
+  width:60%;
+  height:100%;
+  background:linear-gradient(
+    120deg,
+    transparent,
+    rgba(255,255,255,0.35),
+    transparent
+  );
+  transform:skewX(-20deg);
+  opacity:.6;
+}
+
+/* دایره نور گوشه بالا */
 .gold-card::after{
   content:"";
   position:absolute;
