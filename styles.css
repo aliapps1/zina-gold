@@ -87,7 +87,30 @@ h1{margin:0;font-size:clamp(36px,10vw,52px);line-height:.96;letter-spacing:-1.6p
   width:210px;
   height:210px;
   border-radius:50%;
-  background:rgba(255,255,255,.16)
+  background:rgba(255,255,255,.18)
+}
+
+/* 👇 اینجا اضافه کن 👇 */
+
+.card-bottom{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-end;
+  margin-top:10px;
+}
+
+.card-holder span,
+.card-expiry span{
+  font-size:10px;
+  opacity:0.7;
+  letter-spacing:1px;
+}
+
+.card-holder strong,
+.card-expiry strong{
+  display:block;
+  font-size:14px;
+  margin-top:2px;
 }
 .shine{position:absolute;inset:0;background:linear-gradient(115deg,transparent 0%,rgba(255,255,255,.23) 42%,transparent 58%);transform:translateX(-120%);animation:shine 4s ease-in-out infinite}
 @keyframes shine{0%,42%{transform:translateX(-120%)}64%,100%{transform:translateX(120%)}}
